@@ -1,13 +1,10 @@
 <!doctype html>
 <html>
   <head>
-    <script type="text/css" src="styles.css"></script>
-    <script type="text/javascript" src="main.js" name="main.js"></script>
     <script type="text/javascript" src="http://threejs.org/build/three.min.js" name="THREE"></script>
   </head>
 
   <body>
-    <audio id="song" src="EyeKnow.m4a"></audio>
     <main>
         <script>
         //Creation of PerspectiveCamera
@@ -51,7 +48,7 @@
         var audioLoader = new THREE.AudioLoader();
 
         //Load a sound and set it as the Audio object's buffer
-        audioLoader.load( 'EyeKnow.m4a', function( buffer ) {
+        audioLoader.load('EyeKnow.m4a', function( buffer ) {
         	sound.setBuffer( buffer );
         	sound.setLoop( true );
         	sound.setVolume( 0.5 );
