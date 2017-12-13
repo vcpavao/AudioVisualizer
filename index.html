@@ -1,61 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script type="text/javascript" src="http://threejs.org/build/three.min.js" name="THREE"></script>
+    <script type="text/javascript" src="js/main.js" name="main.js"></script>
+    <script type="text/javascript" src="js/dat.gui.min.js" name="dat"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js" name="OrbitControls"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/libs/stats.min.js" name="Stats"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/loaders/ColladaLoader.js" name="ColladaLoader"></script>
+    <script type = "text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/renderers/CanvasRenderer.js" name = "CanvasRenderer"></script>
+    <script type = "text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/renderers/Projector.js" name = "Projector"></script>
   </head>
 
   <body>
-    <main>
-        <script>
-        //Creation of PerspectiveCamera
-        var scene    = new THREE.Scene();
-        var camera   = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-        var renderer = new THREE.WebGLRenderer();
-
-        // (width, height, depth)
-        var geometry = new THREE.BoxGeometry(5, 5, 5);
-        var material = new THREE.MeshLambertMaterial({color: 0xf6546a})
-        var mesh = new THREE.Mesh(geometry, material)
-        scene.add(mesh);
-
-        // (color, intensity)
-        var light = new THREE.PointLight(0xffffff, 1.6);
-        // (x, y, z)
-        light.position.set(0, 0, 6);
-        scene.add(light);
-
-        // move the camera back
-        camera.position.z = 10;
-
-        renderer.setSize(window.innerWidth/1.04, window.innerHeight/1.04);
-        renderer.setClearColor(0x3399ff);
-        document.body.appendChild(renderer.domElement);
-
-        function render(){
-        	requestAnimationFrame(render);
-        	mesh.rotation.x += 0.01;
-        	mesh.rotation.y += 0.01;
-        	renderer.render(scene, camera);
-        }
-
-        //Create an AudioListener and add it to the camera
-        var listener = new THREE.AudioListener();
-        camera.add( listener );
-
-        // create a global audio source
-        var sound = new THREE.Audio( listener );
-
-        var audioLoader = new THREE.AudioLoader();
-
-        //Load a sound and set it as the Audio object's buffer
-        audioLoader.load('EyeKnow.m4a', function( buffer ) {
-        	sound.setBuffer( buffer );
-        	sound.setLoop( true );
-        	sound.setVolume( 0.5 );
-        	sound.play();
-        });
-        render();
-      </script>
-    </main>
+    <audio src="audio/TheGrid.m4a" id="myAudio"></audio>
+  		<div id ="webGL-container"></div>
   </body>
 </html>
